@@ -1,13 +1,13 @@
 import 'package:albazar_app/Features/ads/presentation/widgets/check_boxes_section.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/chip_section.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/custom_check_box.dart';
-import 'package:albazar_app/Features/ads/presentation/widgets/number_field.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/numbers_section.dart';
 import 'package:albazar_app/core/utils/constants.dart';
 import 'package:albazar_app/core/widgets/custom_drob_down.dart';
 import 'package:albazar_app/core/widgets/fields/custom_labeled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_xlider/flutter_xlider.dart';
 
 class PropertiesForSaleFiltersForm extends StatefulWidget {
   final Map<String, dynamic>? filters;
@@ -47,6 +47,18 @@ class PropertiesForSaleFiltersFormState
   bool isChecked = false;
 
   int _selectedRoom = 0, _selectedBathroom = 0;
+
+  // Price slider variables
+  double _lowerPriceValue = 0;
+  double _upperPriceValue = 20000000; // 20 million max price
+
+  // Down payment slider variables
+  double _lowerDownPaymentValue = 0;
+  double _upperDownPaymentValue = 10000000; // 10 million max down payment
+
+  // Area slider variables
+  double _lowerAreaValue = 0;
+  double _upperAreaValue = 1000; // 1000 sqm max area
 
   final List<String> buildingStatus = [
     "جاهز",
@@ -141,6 +153,38 @@ class PropertiesForSaleFiltersFormState
 
     _selectedDeliveryTerm = widget.filters?["delivery conditions"] ?? '';
     _selectedBuildingStatus = widget.filters?["property condition"] ?? '';
+
+    // Initialize price slider values from filters
+    if (widget.filters?["price[gte]"] != null) {
+      _lowerPriceValue =
+          (widget.filters!["price[gte]"] as num).toDouble().clamp(0, 20000000);
+    }
+    if (widget.filters?["price[lte]"] != null) {
+      _upperPriceValue =
+          (widget.filters!["price[lte]"] as num).toDouble().clamp(0, 20000000);
+    }
+
+    // Initialize down payment slider values from filters
+    if (widget.filters?["down payment[gte]"] != null) {
+      _lowerDownPaymentValue = (widget.filters!["down payment[gte]"] as num)
+          .toDouble()
+          .clamp(0, 10000000);
+    }
+    if (widget.filters?["down payment[lte]"] != null) {
+      _upperDownPaymentValue = (widget.filters!["down payment[lte]"] as num)
+          .toDouble()
+          .clamp(0, 10000000);
+    }
+
+    // Initialize area slider values from filters
+    if (widget.filters?["area[gte]"] != null) {
+      _lowerAreaValue =
+          (widget.filters!["area[gte]"] as num).toDouble().clamp(0, 1000);
+    }
+    if (widget.filters?["area[lte]"] != null) {
+      _upperAreaValue =
+          (widget.filters!["area[lte]"] as num).toDouble().clamp(0, 1000);
+    }
   }
 
   Map<String, dynamic> search() => {
@@ -191,6 +235,71 @@ class PropertiesForSaleFiltersFormState
     _buildingAgeontroller.dispose();
     _currencyController.dispose();
     super.dispose();
+  }
+
+  // Helper method to build price display boxes
+  Widget _buildPriceBox(String value) {
+    final currency = _dollarOrLeraa == 'دولار' ? 'USD' : 'SYP';
+    final formattedValue = double.parse(value).toStringAsFixed(0);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.grey.shade50,
+      ),
+      child: Text(
+        '$formattedValue $currency',
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).focusColor,
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build down payment display boxes
+  Widget _buildDownPaymentBox(String value) {
+    final currency = _dollarOrLeraa == 'دولار' ? 'USD' : 'SYP';
+    final formattedValue = double.parse(value).toStringAsFixed(0);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.grey.shade50,
+      ),
+      child: Text(
+        '$formattedValue $currency',
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).focusColor,
+        ),
+      ),
+    );
+  }
+
+  // Helper method to build area display boxes
+  Widget _buildAreaBox(String value) {
+    final formattedValue = double.parse(value).toStringAsFixed(0);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(8),
+        color: Colors.grey.shade50,
+      ),
+      child: Text(
+        '$formattedValue م٢',
+        style: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).focusColor,
+        ),
+      ),
+    );
   }
 
   @override
@@ -299,27 +408,62 @@ class PropertiesForSaleFiltersFormState
             fontWeight: FontWeight.w700,
           ),
         ),
-        Row(
+        const SizedBox(
+          height: 25,
+        ),
+        Column(
           children: [
-            NumberField(
-              isExpanded: true,
-              controller: _areaFromController,
-              title: '',
-              metric: 'sqft',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildAreaBox(_upperAreaValue.toInt().toString()), // "إلى"
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text("إلى", style: TextStyle(color: Colors.grey)),
+                ),
+                _buildAreaBox(_lowerAreaValue.toInt().toString()), // "من"
+              ],
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            NumberField(
-              isExpanded: true,
-              controller: _areaToController,
-              title: '',
-              metric: 'sqft',
+            const SizedBox(height: 16),
+            FlutterSlider(
+              values: [_lowerAreaValue, _upperAreaValue],
+              rangeSlider: true,
+              max: 1000, // Max 1000 sqm
+              min: 0,
+              step: const FlutterSliderStep(step: 10), // 10 sqm steps
+              handler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              rightHandler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              trackBar: const FlutterSliderTrackBar(
+                activeTrackBar: BoxDecoration(color: Colors.yellow),
+              ),
+              onDragging: (handlerIndex, lowerValue, upperValue) {
+                if (mounted) {
+                  setState(() {
+                    _lowerAreaValue = lowerValue;
+                    _upperAreaValue = upperValue;
+                    // Update text controllers for compatibility with search method
+                    _areaFromController.text = lowerValue.toInt().toString();
+                    _areaToController.text = upperValue.toInt().toString();
+                  });
+                }
+              },
             ),
           ],
         ),
         const SizedBox(
-          height: 20,
+          height: 10,
         ),
         CustomLabeledTextField(
           controller: _floorController,
@@ -372,22 +516,62 @@ class PropertiesForSaleFiltersFormState
             fontWeight: FontWeight.w700,
           ),
         ),
-        Row(
+        const SizedBox(
+          height: 25,
+        ),
+        Column(
           children: [
-            NumberField(
-              isExpanded: true,
-              controller: _priceFromController,
-              title: 'من',
-              metric: _dollarOrLeraa == 'دولار' ? "USD" : 'SYP',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildPriceBox(_upperPriceValue.toInt().toString()), // "إلى"
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text("إلى", style: TextStyle(color: Colors.grey)),
+                ),
+                _buildPriceBox(_lowerPriceValue.toInt().toString()), // "من"
+              ],
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            NumberField(
-              isExpanded: true,
-              controller: _priceToController,
-              title: 'إلى',
-              metric: _dollarOrLeraa == 'دولار' ? "USD" : 'SYP',
+            const SizedBox(height: 16),
+            FlutterSlider(
+              values: [_lowerPriceValue, _upperPriceValue],
+              rangeSlider: true,
+              max: _dollarOrLeraa == 'دولار'
+                  ? 500000
+                  : 20000000, // Adjust max based on currency
+              min: 0,
+              step: FlutterSliderStep(
+                  step: _dollarOrLeraa == 'دولار'
+                      ? 1000
+                      : 100000), // Adjust step based on currency
+              handler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              rightHandler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              trackBar: const FlutterSliderTrackBar(
+                activeTrackBar: BoxDecoration(color: Colors.yellow),
+              ),
+              onDragging: (handlerIndex, lowerValue, upperValue) {
+                if (mounted) {
+                  setState(() {
+                    _lowerPriceValue = lowerValue;
+                    _upperPriceValue = upperValue;
+                    // Update text controllers for compatibility with search method
+                    _priceFromController.text = lowerValue.toInt().toString();
+                    _priceToController.text = upperValue.toInt().toString();
+                  });
+                }
+              },
             ),
           ],
         ),
@@ -419,22 +603,65 @@ class PropertiesForSaleFiltersFormState
             fontWeight: FontWeight.w700,
           ),
         ),
-        Row(
+        const SizedBox(
+          height: 25,
+        ),
+        Column(
           children: [
-            NumberField(
-              isExpanded: true,
-              controller: _providedFromController,
-              title: 'من',
-              metric: _dollarOrLeraa == 'دولار' ? "USD" : 'SYP',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildDownPaymentBox(
+                    _upperDownPaymentValue.toInt().toString()), // "إلى"
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                  child: Text("إلى", style: TextStyle(color: Colors.grey)),
+                ),
+                _buildDownPaymentBox(
+                    _lowerDownPaymentValue.toInt().toString()), // "من"
+              ],
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            NumberField(
-              isExpanded: true,
-              controller: _providedToController,
-              title: 'إلى',
-              metric: _dollarOrLeraa == 'دولار' ? "USD" : 'SYP',
+            const SizedBox(height: 16),
+            FlutterSlider(
+              values: [_lowerDownPaymentValue, _upperDownPaymentValue],
+              rangeSlider: true,
+              max: _dollarOrLeraa == 'دولار'
+                  ? 100000
+                  : 10000000, // Adjust max based on currency
+              min: 0,
+              step: FlutterSliderStep(
+                  step: _dollarOrLeraa == 'دولار'
+                      ? 500
+                      : 50000), // Adjust step based on currency
+              handler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              rightHandler: FlutterSliderHandler(
+                decoration: const BoxDecoration(),
+                child: const CircleAvatar(
+                  radius: 10,
+                  backgroundColor: Colors.yellow,
+                ),
+              ),
+              trackBar: const FlutterSliderTrackBar(
+                activeTrackBar: BoxDecoration(color: Colors.yellow),
+              ),
+              onDragging: (handlerIndex, lowerValue, upperValue) {
+                if (mounted) {
+                  setState(() {
+                    _lowerDownPaymentValue = lowerValue;
+                    _upperDownPaymentValue = upperValue;
+                    // Update text controllers for compatibility with search method
+                    _providedFromController.text =
+                        lowerValue.toInt().toString();
+                    _providedToController.text = upperValue.toInt().toString();
+                  });
+                }
+              },
             ),
           ],
         ),
