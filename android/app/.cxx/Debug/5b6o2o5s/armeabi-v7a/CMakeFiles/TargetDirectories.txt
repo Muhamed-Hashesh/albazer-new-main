@@ -1,0 +1,2 @@
+/Users/muhamed/Desktop/albazer-new-main/android/app/.cxx/Debug/5b6o2o5s/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/muhamed/Desktop/albazer-new-main/android/app/.cxx/Debug/5b6o2o5s/armeabi-v7a/CMakeFiles/rebuild_cache.dir

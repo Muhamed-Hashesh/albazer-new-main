@@ -1,0 +1,83 @@
+name: albazar_app
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.0 <4.0.0'
+
+dependencies:
+  animated_bottom_navigation_bar: ^1.4.0
+  cached_network_image: ^3.4.1
+  carousel_slider: ^5.0.0
+  connectivity_plus: ^6.1.3
+  crypto: ^3.0.6
+  cupertino_icons: ^1.0.8
+  dartz: ^0.10.1
+  day_night_themed_switch: ^1.0.0
+  device_preview: ^1.2.0
+  dio: null
+  easy_localization: ^3.0.7+1
+  equatable: ^2.0.7
+  firebase_auth: ^5.5.2
+  firebase_core: ^3.13.0
+  firebase_messaging: ^15.2.5
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^9.1.0
+  flutter_facebook_auth: ^7.1.1
+  flutter_local_notifications: ^18.0.0
+  flutter_localizations:
+    sdk: flutter
+  flutter_native_splash: null
+  flutter_rating_bar: ^4.0.1
+  flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^9.2.4
+  flutter_svg: ^2.0.17
+  flutter_typeahead: ^5.2.0
+  flutter_xlider: ^3.5.0
+  font_awesome_flutter: null
+  geocoding: ^3.0.0
+  geolocator: null
+  get_it: ^8.0.3
+  google_maps_flutter: null
+  google_places_flutter: ^2.1.0
+  google_sign_in: null
+  http: ^1.3.0
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+  intl_phone_field: ^3.2.0
+  permission_handler: null
+  provider: ^6.1.4
+  shared_preferences: null
+  sign_in_with_apple: ^7.0.1
+  skeletonizer: ^1.4.3
+  socket_io_client: ^3.0.2
+  url_launcher: ^6.3.1
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/car logoes/
+    - assets/icons/
+    - assets/notifications_key/albazar-70cdd-e6ef120fb540.json
+
+  fonts:
+    - family: Noor
+      fonts:
+        - asset: assets/fonts/AGCRegular.ttf
+
+    - family: Cairo
+      fonts:
+        - asset: assets/fonts/Cairo-Regular.ttf

@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "637656509591",
+    "project_id": "albazar-c3f51",
+    "storage_bucket": "albazar-c3f51.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637656509591:android:f34d103375e8372bd08dd2",
+        "android_client_info": {
+          "package_name": "com.example.albazar_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637656509591-uer7ei0rulnqoramhpqcvb3sqvmo4ok1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.albazar_app",
+            "certificate_hash": "53401ca90046cf16f0681b707fa8baaf9f1c902c"
+          }
+        },
+        {
+          "client_id": "637656509591-07r67h0mkmqgttglqiupdqo5ic08dlvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj19UwVvRq3mDM02sASmyKCudBXkdmJ3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637656509591-07r67h0mkmqgttglqiupdqo5ic08dlvl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "637656509591-8q18bb186cpuvi2icsojmgukujji37r9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.albazarApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
