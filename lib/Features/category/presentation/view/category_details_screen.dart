@@ -80,13 +80,10 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
         widget.ad.seats != null &&
         widget.ad.color != null &&
         widget.ad.innerpart != null;
-    bool isForRent = widget.ad.furnishing != null &&
-        widget.ad.year != null &&
-        widget.ad.city != null &&
-        widget.ad.regulationStatus != null &&
-        widget.ad.floor != null &&
-        widget.ad.rentalRate != null &&
-        widget.ad.rentalFees != null;
+    bool isForRent = (widget.ad.listingstatus == 'للإيجار' ||
+            widget.ad.rentalRate != null ||
+            widget.ad.rentalFees != null) &&
+        widget.ad.propertyType != null;
     bool isForSale = widget.ad.furnishing != null &&
         widget.ad.year != null &&
         widget.ad.regulationStatus != null &&
@@ -334,7 +331,78 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
                                         tilte: 'المحافظة',
                                         value: widget.ad.city),
                                   ])
-                                : Container(),
+                                : widget.ad.listingstatus == 'للإيجار'
+                                    ? CarDetails(detailsList: [
+                                        DetailsModel(
+                                            tilte: 'نوع العقار',
+                                            value: widget.ad.propertyType),
+                                        DetailsModel(
+                                            tilte: 'حالة العقار',
+                                            value:
+                                                widget.ad.propertyCondition ??
+                                                    widget.ad.listingstatus),
+                                        if (widget.ad.regulationStatus != null)
+                                          DetailsModel(
+                                            tilte: 'التنظيم',
+                                            value: widget.ad.regulationStatus,
+                                          ),
+                                        if (widget.ad.area != null)
+                                          DetailsModel(
+                                            tilte: 'المساحه',
+                                            value: "${widget.ad.area}",
+                                          ),
+                                        if (widget.ad.floor != null)
+                                          DetailsModel(
+                                              tilte: 'الطابق',
+                                              value: widget.ad.floor),
+                                        if (widget.ad.floorNumber != null)
+                                          DetailsModel(
+                                              tilte: 'عدد الطوابق',
+                                              value: widget.ad.floorNumber),
+                                        if (widget.ad.numberOfRooms != null)
+                                          DetailsModel(
+                                              tilte: 'عدد الغرف',
+                                              value:
+                                                  "${widget.ad.numberOfRooms}"),
+                                        if (widget.ad.numberOfSalons != null)
+                                          DetailsModel(
+                                              tilte: 'عدد الصالونات',
+                                              value:
+                                                  "${widget.ad.numberOfSalons}"),
+                                        if (widget.ad.numberOfBathrooms != null)
+                                          DetailsModel(
+                                              tilte: 'عدد الحمامات',
+                                              value:
+                                                  "${widget.ad.numberOfBathrooms}"),
+                                        if (widget.ad.year != null)
+                                          DetailsModel(
+                                              tilte: 'عمر\n المبنى',
+                                              value: widget.ad.year),
+                                        if (widget.ad.furnishing != null)
+                                          DetailsModel(
+                                              tilte: 'مفروش',
+                                              value:
+                                                  widget.ad.furnishing == true
+                                                      ? 'نعم'
+                                                      : 'لا '),
+                                        if (widget.ad.paymentMethod != null)
+                                          DetailsModel(
+                                              tilte: 'الدفع',
+                                              value: widget.ad.paymentMethod),
+                                        if (widget.ad.city != null)
+                                          DetailsModel(
+                                              tilte: 'المحافظة',
+                                              value: widget.ad.city),
+                                      ])
+                                    : Container(
+                                        child: Text(
+                                          'لا يوجد تفاصيل',
+                                          style: TextStyle(
+                                            color: Theme.of(context).hoverColor,
+                                            fontSize: 16,
+                                          ),
+                                        ),
+                                      ),
                 const Divider(
                   color: Color(0xFF9C9C9C),
                 ),
