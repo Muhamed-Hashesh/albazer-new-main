@@ -39,7 +39,6 @@ class PropertiesForSaleFiltersFormState
       _selectedChoice = '',
       _selectedLocation = '',
       _publishedVia = '',
-      _selectedType = '',
       _selectedBuildingStatus = '',
       _selectedContactMethod = '',
       _selectedDeliveryTerm = '';
@@ -51,10 +50,6 @@ class PropertiesForSaleFiltersFormState
   // Price slider variables
   double _lowerPriceValue = 0;
   double _upperPriceValue = 20000000; // 20 million max price
-
-  // Down payment slider variables
-  double _lowerDownPaymentValue = 0;
-  double _upperDownPaymentValue = 10000000; // 10 million max down payment
 
   // Area slider variables
   double _lowerAreaValue = 0;
@@ -99,10 +94,6 @@ class PropertiesForSaleFiltersFormState
     "يوميا",
     "اسبوعيا",
     "شهريا",
-  ];
-  final List<String> types = [
-    "سكنى",
-    "تجارى",
   ];
 
   final List<String> luxuries = [
@@ -162,18 +153,6 @@ class PropertiesForSaleFiltersFormState
     if (widget.filters?["price[lte]"] != null) {
       _upperPriceValue =
           (widget.filters!["price[lte]"] as num).toDouble().clamp(0, 20000000);
-    }
-
-    // Initialize down payment slider values from filters
-    if (widget.filters?["down payment[gte]"] != null) {
-      _lowerDownPaymentValue = (widget.filters!["down payment[gte]"] as num)
-          .toDouble()
-          .clamp(0, 10000000);
-    }
-    if (widget.filters?["down payment[lte]"] != null) {
-      _upperDownPaymentValue = (widget.filters!["down payment[lte]"] as num)
-          .toDouble()
-          .clamp(0, 10000000);
     }
 
     // Initialize area slider values from filters
@@ -239,28 +218,6 @@ class PropertiesForSaleFiltersFormState
 
   // Helper method to build price display boxes
   Widget _buildPriceBox(String value) {
-    final currency = _dollarOrLeraa == 'دولار' ? 'USD' : 'SYP';
-    final formattedValue = double.parse(value).toStringAsFixed(0);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey.shade300),
-        borderRadius: BorderRadius.circular(8),
-        color: Colors.grey.shade50,
-      ),
-      child: Text(
-        '$formattedValue $currency',
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w600,
-          color: Theme.of(context).focusColor,
-        ),
-      ),
-    );
-  }
-
-  // Helper method to build down payment display boxes
-  Widget _buildDownPaymentBox(String value) {
     final currency = _dollarOrLeraa == 'دولار' ? 'USD' : 'SYP';
     final formattedValue = double.parse(value).toStringAsFixed(0);
     return Container(
@@ -364,25 +321,6 @@ class PropertiesForSaleFiltersFormState
                 _publishedVia = status;
               });
             }),
-        const SizedBox(
-          height: 25,
-        ),
-        CheckBoxesSection(
-            title: "الفئة",
-            selectedItems: [_selectedType],
-            items: types,
-            onChanged: (status) {
-              setState(() {
-                if (_selectedType == status) {
-                  _selectedType = '';
-                  return;
-                }
-                _selectedType = status;
-              });
-            }),
-        const SizedBox(
-          height: 10,
-        ),
         CheckBoxesSection(
             title: 'نوع العقار',
             items: buildings,
@@ -590,80 +528,6 @@ class PropertiesForSaleFiltersFormState
               isChecked = value!;
             });
           },
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          'المقدم',
-          style: TextStyle(
-            color: Theme.of(context).focusColor,
-            fontSize: 16,
-            fontFamily: 'Noor',
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        const SizedBox(
-          height: 25,
-        ),
-        Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildDownPaymentBox(
-                    _upperDownPaymentValue.toInt().toString()), // "إلى"
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text("إلى", style: TextStyle(color: Colors.grey)),
-                ),
-                _buildDownPaymentBox(
-                    _lowerDownPaymentValue.toInt().toString()), // "من"
-              ],
-            ),
-            const SizedBox(height: 16),
-            FlutterSlider(
-              values: [_lowerDownPaymentValue, _upperDownPaymentValue],
-              rangeSlider: true,
-              max: _dollarOrLeraa == 'دولار'
-                  ? 100000
-                  : 10000000, // Adjust max based on currency
-              min: 0,
-              step: FlutterSliderStep(
-                  step: _dollarOrLeraa == 'دولار'
-                      ? 500
-                      : 50000), // Adjust step based on currency
-              handler: FlutterSliderHandler(
-                decoration: const BoxDecoration(),
-                child: const CircleAvatar(
-                  radius: 10,
-                  backgroundColor: Colors.yellow,
-                ),
-              ),
-              rightHandler: FlutterSliderHandler(
-                decoration: const BoxDecoration(),
-                child: const CircleAvatar(
-                  radius: 10,
-                  backgroundColor: Colors.yellow,
-                ),
-              ),
-              trackBar: const FlutterSliderTrackBar(
-                activeTrackBar: BoxDecoration(color: Colors.yellow),
-              ),
-              onDragging: (handlerIndex, lowerValue, upperValue) {
-                if (mounted) {
-                  setState(() {
-                    _lowerDownPaymentValue = lowerValue;
-                    _upperDownPaymentValue = upperValue;
-                    // Update text controllers for compatibility with search method
-                    _providedFromController.text =
-                        lowerValue.toInt().toString();
-                    _providedToController.text = upperValue.toInt().toString();
-                  });
-                }
-              },
-            ),
-          ],
         ),
         const SizedBox(
           height: 10,
