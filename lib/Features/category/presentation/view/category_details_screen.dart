@@ -267,9 +267,6 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
                                     tilte: 'نوع العقار',
                                     value: widget.ad.propertyType),
                                 DetailsModel(
-                                    tilte: 'حالة العقار',
-                                    value: widget.ad.propertyCondition),
-                                DetailsModel(
                                   tilte: 'التنظيم',
                                   value: widget.ad.regulationStatus,
                                 ),
@@ -299,12 +296,6 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
                                     value: widget.ad.furnishing == true
                                         ? 'نعم'
                                         : 'لا '),
-                                DetailsModel(
-                                    tilte: 'حالة\nالمبنى',
-                                    value: widget.ad.propertyCondition),
-                                DetailsModel(
-                                    tilte: 'الدفع',
-                                    value: widget.ad.paymentMethod),
                                 DetailsModel(
                                     tilte: 'المحافظة', value: widget.ad.city),
                               ])
@@ -336,11 +327,6 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
                                         DetailsModel(
                                             tilte: 'نوع العقار',
                                             value: widget.ad.propertyType),
-                                        DetailsModel(
-                                            tilte: 'حالة العقار',
-                                            value:
-                                                widget.ad.propertyCondition ??
-                                                    widget.ad.listingstatus),
                                         if (widget.ad.regulationStatus != null)
                                           DetailsModel(
                                             tilte: 'التنظيم',
@@ -385,10 +371,6 @@ class _CategoryDetailsScreenState extends State<CategoryDetailsScreen> {
                                                   widget.ad.furnishing == true
                                                       ? 'نعم'
                                                       : 'لا '),
-                                        if (widget.ad.paymentMethod != null)
-                                          DetailsModel(
-                                              tilte: 'الدفع',
-                                              value: widget.ad.paymentMethod),
                                         if (widget.ad.city != null)
                                           DetailsModel(
                                               tilte: 'المحافظة',
