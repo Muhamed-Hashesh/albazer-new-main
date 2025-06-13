@@ -608,6 +608,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
                         (car) => _buildCarCard(
                           car['label']!,
                           car['image']!,
+                          isSelected: selectedCarTypeeee == car['label']!,
                           onSelect: (value) {
                             setState(() {
                               selectedCarTypeeee = value;
@@ -616,12 +617,18 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
                           },
                         ),
                       ),
-                      _buildOtherCard(context, (value) {
-                        setState(() {
-                          selectedCarTypeeee = value;
-                        });
-                        print("Selected from others: $value");
-                      }),
+                      _buildOtherCard(
+                        context,
+                        isSelected: !carTypes.any(
+                                (car) => car['label'] == selectedCarTypeeee) &&
+                            (selectedCarTypeeee?.isNotEmpty ?? false),
+                        onSelect: (value) {
+                          setState(() {
+                            selectedCarTypeeee = value;
+                          });
+                          print("Selected from others: $value");
+                        },
+                      ),
                     ],
                   ),
                 ),
@@ -955,7 +962,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
   }
 
   Widget _buildCarCard(String label, String imagePath,
-      {required void Function(String) onSelect}) {
+      {required void Function(String) onSelect, bool isSelected = false}) {
     return GestureDetector(
       onTap: () => onSelect(label),
       child: Card(
@@ -963,7 +970,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: BorderSide(color: Colors.black),
+          side: BorderSide(
+            color: isSelected ? Colors.blue : Colors.black,
+            width: isSelected ? 3.0 : 1.0,
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(5.0),
@@ -984,7 +994,8 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
     );
   }
 
-  Widget _buildOtherCard(BuildContext context, void Function(String) onSelect) {
+  Widget _buildOtherCard(BuildContext context,
+      {required void Function(String) onSelect, bool isSelected = false}) {
     final List<String> moreCarTypes = [
       "ليموزين",
       "سيارة كلاسيكية",
@@ -1041,7 +1052,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
         color: Colors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: const BorderSide(color: Colors.black),
+          side: BorderSide(
+            color: isSelected ? Colors.blue : Colors.black,
+            width: isSelected ? 3.0 : 1.0,
+          ),
         ),
         child: const Center(
           child: Column(
