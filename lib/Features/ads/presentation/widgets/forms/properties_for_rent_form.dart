@@ -1,5 +1,6 @@
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:albazar_app/Features/ads/data/models/ad.dart';
 import 'package:albazar_app/Features/ads/presentation/cubit/new_ad_cubit.dart';
 import 'package:albazar_app/Features/ads/presentation/view/google_map_screen.dart';
@@ -53,10 +54,10 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
   final GlobalKey _nameKey = GlobalKey();
   final GlobalKey _phoneKey = GlobalKey();
   final GlobalKey _cityKey = GlobalKey();
-  final GlobalKey _floor = GlobalKey();///////////////
-  final GlobalKey _floorNum = GlobalKey();////////////
+  final GlobalKey _floor = GlobalKey(); ///////////////
+  final GlobalKey _floorNum = GlobalKey(); ////////////
   final GlobalKey _rooms = GlobalKey();
-  final GlobalKey _salons = GlobalKey();/////////////
+  final GlobalKey _salons = GlobalKey(); /////////////
   final GlobalKey _bathrooms = GlobalKey();
   final GlobalKey _age = GlobalKey();
   final List<File> _images = [];
@@ -183,12 +184,12 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
       if (_selectedRentRate.isEmpty) _areaKey,
       if (_feesController.text.isEmpty) _feesKey,
       if (_insuranceController.text.isEmpty) _insuranceKey,
-      if (selectedBuildingAge == null) _buildingAgeKey,
+      if (_selectedBuildingAge == null) _buildingAgeKey,
       if (_nameController.text.isEmpty) _nameKey,
       if (_phoneController.text.isEmpty) _phoneKey,
       if (_selectedContactMethod.isEmpty) _areaKey,
-      if (_selectedFloor == null) _floor,//////
-      if (_selectedFloorNum == null) _floorNum,//////
+      if (_selectedFloor == null) _floor, //////
+      if (_selectedFloorNum == null) _floorNum, //////
     ];
 
     if (fieldsToValidate.isNotEmpty) {
@@ -679,7 +680,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
       currency: _dollarOrLera,
       city: _selectedCity,
       publishedVia: _owner,
-      year: selectedBuildingAge,
+      year: _selectedBuildingAge,
       adTitle: _adTitleController.text.trim(),
       description: _descriptionController.text.trim(),
       area: num.parse(_areaController.text.trim()),
@@ -701,7 +702,8 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
       furnishing: _selectedChoice == furnitureChoices.first,
       numberOfBathrooms: _selectedBathroom,
       numberOfRooms: _selectedRoom,
-       deed: _selectedDeed,
+      numberOfSalons: _selectedSalons,
+      deed: _selectedDeed,
       imageFiles: _images,
       user: UserHelper.user?.id,
       lat: lat,
@@ -743,13 +745,13 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
       AppMessages.showError(context, 'اختر المحافظة');
       return false;
     }
-         if (_selectedFloor == null) {
+    if (_selectedFloor == null) {
       AppMessages.showError(context, 'اختر الطابق');
       return false;
     }
-     if (_selectedFloorNum == null) {
+    if (_selectedFloorNum == null) {
       AppMessages.showError(context, 'اختر عدد الطوابق');
-         return false;
+      return false;
     }
     if (_selectedLuxuries.isEmpty) {
       AppMessages.showError(context, 'ادخل الكماليات');
@@ -764,8 +766,8 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
       return false;
     }
 
-     if (_selectedSalons == 0) {
-      AppMessages.showError(context, 'ادخل عدد الصالونات');////////////////
+    if (_selectedSalons == 0) {
+      AppMessages.showError(context, 'ادخل عدد الصالونات'); ////////////////
       return false;
     }
 
@@ -776,6 +778,11 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
 
     if (_selectedChoice.isEmpty) {
       AppMessages.showError(context, 'ادخل الفرش');
+      return false;
+    }
+
+    if (_selectedBuildingAge == null || _selectedBuildingAge!.isEmpty) {
+      AppMessages.showError(context, 'ادخل عمر المبنى');
       return false;
     }
 
