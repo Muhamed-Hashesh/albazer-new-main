@@ -49,7 +49,7 @@ class PropertiesForSaleFiltersFormState
 
   // Price slider variables
   double _lowerPriceValue = 0;
-  double _upperPriceValue = 20000000; // 20 million max price
+  double _upperPriceValue = 10000000; // 20 million max price
 
   // Area slider variables
   double _lowerAreaValue = 0;
@@ -401,7 +401,8 @@ class PropertiesForSaleFiltersFormState
               rangeSlider: true,
               max: 1000, // Max 1000 sqm
               min: 0,
-              step: const FlutterSliderStep(step: 10), // 10 sqm steps
+              step: const FlutterSliderStep(
+                  step: 5), // 5 sqm steps (reduced from 10)
               handler: FlutterSliderHandler(
                 decoration: const BoxDecoration(),
                 child: const CircleAvatar(
@@ -473,6 +474,26 @@ class PropertiesForSaleFiltersFormState
               setState(() {
                 _dollarOrLeraa = curruncy!;
                 _currencyController.text = curruncy;
+
+                // Reset price values when currency changes to avoid max value errors
+                if (curruncy == 'دولار') {
+                  // Switch to USD - check if current values exceed USD limits
+                  if (_upperPriceValue > 500000) {
+                    _upperPriceValue = 500000;
+                    _priceToController.text = '500000';
+                  }
+                  if (_lowerPriceValue > 500000) {
+                    _lowerPriceValue = 0;
+                    _priceFromController.text = '0';
+                  }
+                } else {
+                  // Switch to SYP - set reasonable default values
+                  if (_upperPriceValue > 10000000) {
+                    _upperPriceValue = 10000000;
+                    _priceToController.text = '10000000';
+                  }
+                  // Keep the lower value as is since SYP max is higher
+                }
               });
             }),
         const SizedBox(
@@ -513,8 +534,8 @@ class PropertiesForSaleFiltersFormState
               min: 0,
               step: FlutterSliderStep(
                   step: _dollarOrLeraa == 'دولار'
-                      ? 1000
-                      : 100000), // Adjust step based on currency
+                      ? 100 // Reduced from 1000 to 100 USD
+                      : 10000), // Reduced from 100000 to 10000 SYP
               handler: FlutterSliderHandler(
                 decoration: const BoxDecoration(),
                 child: const CircleAvatar(
