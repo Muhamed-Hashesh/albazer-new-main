@@ -167,37 +167,70 @@ class PropertiesForSaleFiltersFormState
   }
 
   Map<String, dynamic> search() => {
-        if (_selectedBuilding.isNotEmpty) "property type": _selectedBuilding,
-        if (_selectedRentRate.isNotEmpty) "rent rate": _selectedRentRate,
-        if (_selectedChoice.isNotEmpty)
-          "furnishing": _selectedChoice == furnitureChoices.first,
-        if (_selectedLuxuries.isNotEmpty) "amenities": _selectedLuxuries.first,
-        if (_selectedBuildingStatus.isNotEmpty)
-          "property condition": _selectedBuildingStatus,
-        if (_selectedDeliveryTerm.isNotEmpty)
-          "delivery conditions": _selectedDeliveryTerm,
-        if (_selectedRoom > 0) "number of rooms": _selectedRoom,
+        // المحافظة : city
+        if (_cityController.text.trim().isNotEmpty)
+          "city": _cityController.text.trim(),
+
+        // داخل / خارج التنظيم : regulationStatus
         if (_selectedLocation.isNotEmpty) "regulationStatus": _selectedLocation,
-        if (_publishedVia.isEmpty) "publishedVia": _publishedVia,
-        if (_selectedBathroom > 0) "number of bathrooms": _selectedBathroom,
-        if (_floorController.text.trim().isNotEmpty)
-          "floor": _floorController.text.trim(),
+
+        // تم النشر من قبل : publishedVia
+        if (_publishedVia.isNotEmpty) "publishedVia": _publishedVia,
+
+        // نوع العقار : property type
+        if (_selectedBuilding.isNotEmpty) "property type": _selectedBuilding,
+
+        // المساحة : area[gte] , area[lte]
+        if (_areaFromController.text.trim().isNotEmpty)
+          "area[gte]": num.parse(_areaFromController.text.trim()),
         if (_areaToController.text.trim().isNotEmpty)
           "area[lte]": num.parse(_areaToController.text.trim()),
+
+        // الطابق : floor
+        if (_floorController.text.trim().isNotEmpty)
+          "floor": _floorController.text.trim(),
+
+        // العملة : currency
+        if (_currencyController.text.trim().isNotEmpty)
+          "currency": _currencyController.text.trim(),
+
+        // السعر : price[gte] , price[lte]
         if (_priceFromController.text.trim().isNotEmpty)
           "price[gte]": num.parse(_priceFromController.text.trim()),
         if (_priceToController.text.trim().isNotEmpty)
           "price[lte]": num.parse(_priceToController.text.trim()),
-        if (_providedFromController.text.trim().isNotEmpty)
-          "down payment[gte]": num.parse(_providedFromController.text.trim()),
-        if (_providedToController.text.trim().isNotEmpty)
-          "down payment[lte]": num.parse(_providedToController.text.trim()),
+
+        // قابل للتفاوض : negotiable
+        if (isChecked) "negotiable": isChecked,
+
+        // الكماليات : amenities
+        if (_selectedLuxuries.isNotEmpty) "amenities": _selectedLuxuries.first,
+
+        // عدد الغرف : number of rooms
+        if (_selectedRoom > 0) "number of rooms": _selectedRoom,
+
+        // عدد الحمامات : number of bathrooms
+        if (_selectedBathroom > 0) "number of bathrooms": _selectedBathroom,
+
+        // الفرش : furnishing
+        if (_selectedChoice.isNotEmpty)
+          "furnishing": _selectedChoice == furnitureChoices.first,
+
+        // طريقة الدفع : payment method
+        if (_selectedContactMethod.isNotEmpty)
+          "payment method": _selectedContactMethod,
+
+        // شروط التسليم : delivery conditions
+        if (_selectedDeliveryTerm.isNotEmpty)
+          "delivery conditions": _selectedDeliveryTerm,
+
+        // عمر المبني : year
         if (_buildingAgeontroller.text.trim().isNotEmpty)
-          "building age": _buildingAgeontroller.text.trim(),
-        if (_cityController.text.trim().isNotEmpty)
-          "city": _cityController.text.trim(),
-        if (_currencyController.text.trim().isNotEmpty)
-          "currency": _currencyController.text.trim(),
+          "year": _buildingAgeontroller.text.trim(),
+
+        // حالة العقار : property condition
+        if (_selectedBuildingStatus.isNotEmpty)
+          "property condition": _selectedBuildingStatus,
       };
 
   @override
