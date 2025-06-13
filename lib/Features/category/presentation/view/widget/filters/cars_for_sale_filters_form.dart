@@ -1,12 +1,14 @@
 import 'package:albazar_app/Features/ads/presentation/widgets/check_boxes_section.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/chip_section.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/numbers_section.dart';
+import 'package:albazar_app/core/helper/theme_provider.dart';
 import 'package:albazar_app/core/utils/constants.dart';
 import 'package:albazar_app/core/utils/icons.dart';
 import 'package:albazar_app/core/widgets/custom_drob_down.dart';
 import 'package:albazar_app/core/widgets/fields/custom_labeled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
+import 'package:provider/provider.dart';
 
 class CarsForSaleFiltersForm extends StatefulWidget {
   final Map<String, dynamic>? filters;
@@ -908,6 +910,8 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
   }
 
   Widget _buildYearBox(String year) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return Container(
       width: 80,
       height: 50,
@@ -915,6 +919,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
+        color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
         year,
@@ -924,6 +929,8 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
   }
 
   Widget _buildPriceBox(String price) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return Container(
       width: 80,
       height: 50,
@@ -931,6 +938,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
+        color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
         price,
@@ -940,6 +948,8 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
   }
 
   Widget _buildKmBox(String km) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return Container(
       width: 80,
       height: 50,
@@ -947,6 +957,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
       decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         borderRadius: BorderRadius.circular(10),
+        color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
         km,
@@ -957,11 +968,13 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
 
   Widget _buildCarCard(String label, String imagePath,
       {required void Function(String) onSelect}) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return GestureDetector(
       onTap: () => onSelect(label),
       child: Card(
         surfaceTintColor: Colors.transparent,
-        color: Colors.white,
+        color: isLight ? Colors.white : Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(
@@ -990,7 +1003,9 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
                 child: Text(
                   label,
                   style: const TextStyle(
-                      fontSize: 10, fontWeight: FontWeight.bold),
+                    fontSize: 10,
+                    fontWeight: FontWeight.bold,
+                  ),
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
@@ -1004,6 +1019,8 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
   }
 
   Widget _buildOtherCard(BuildContext context, void Function(String) onSelect) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     final List<String> moreCarTypes = [
       "ليموزين",
       "سيارة كلاسيكية",
@@ -1057,7 +1074,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
       },
       child: Card(
         surfaceTintColor: Colors.transparent,
-        color: Colors.white,
+        color: isLight ? Colors.white : Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: const BorderSide(color: Colors.black),

@@ -2,12 +2,14 @@ import 'package:albazar_app/Features/ads/presentation/widgets/check_boxes_sectio
 import 'package:albazar_app/Features/ads/presentation/widgets/chip_section.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/custom_check_box.dart';
 import 'package:albazar_app/Features/ads/presentation/widgets/numbers_section.dart';
+import 'package:albazar_app/core/helper/theme_provider.dart';
 import 'package:albazar_app/core/utils/constants.dart';
 import 'package:albazar_app/core/widgets/custom_drob_down.dart';
 import 'package:albazar_app/core/widgets/fields/custom_labeled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
+import 'package:provider/provider.dart';
 
 class PropertiesForSaleFiltersForm extends StatefulWidget {
   final Map<String, dynamic>? filters;
@@ -253,12 +255,14 @@ class PropertiesForSaleFiltersFormState
   Widget _buildPriceBox(String value) {
     final currency = _dollarOrLeraa == 'دولار' ? 'USD' : 'SYP';
     final formattedValue = double.parse(value).toStringAsFixed(0);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(8),
-        color: Colors.grey.shade50,
+        color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
         '$formattedValue $currency',
@@ -274,12 +278,14 @@ class PropertiesForSaleFiltersFormState
   // Helper method to build area display boxes
   Widget _buildAreaBox(String value) {
     final formattedValue = double.parse(value).toStringAsFixed(0);
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey.shade300),
         borderRadius: BorderRadius.circular(8),
-        color: Colors.grey.shade50,
+        color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
         '$formattedValue م٢',

@@ -13,6 +13,7 @@ import 'package:albazar_app/Features/ads/presentation/widgets/upload_photos_sect
 import 'package:albazar_app/Features/category/data/models/category.dart';
 import 'package:albazar_app/core/di/locator.dart';
 import 'package:albazar_app/core/helper/messages.dart';
+import 'package:albazar_app/core/helper/theme_provider.dart';
 import 'package:albazar_app/core/helper/user_helper.dart';
 import 'package:albazar_app/core/utils/constants.dart';
 import 'package:albazar_app/core/widgets/custom_drob_down.dart';
@@ -20,6 +21,7 @@ import 'package:albazar_app/core/widgets/fields/custom_labeled_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import '../numbers_section.dart';
 
@@ -971,11 +973,13 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
 
   Widget _buildCarCard(String label, String imagePath,
       {required void Function(String) onSelect, bool isSelected = false}) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     return GestureDetector(
       onTap: () => onSelect(label),
       child: Card(
         surfaceTintColor: Colors.transparent,
-        color: Colors.white,
+        color: isLight ? Colors.white : Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(
@@ -992,8 +996,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
               const SizedBox(height: 8),
               Text(
                 label,
-                style:
-                    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ],
           ),
@@ -1004,6 +1010,8 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
 
   Widget _buildOtherCard(BuildContext context,
       {required void Function(String) onSelect, bool isSelected = false}) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final bool isLight = themeProvider.themeMode == ThemeMode.light;
     final List<String> moreCarTypes = [
       "ليموزين",
       "سيارة كلاسيكية",
@@ -1030,7 +1038,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
               children: [
                 const Text(
                   "أنواع سيارات إضافية",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 const SizedBox(height: 10),
                 Flexible(
@@ -1040,8 +1051,12 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
                     separatorBuilder: (_, __) => const Divider(),
                     itemBuilder: (context, index) {
                       return ListTile(
-                        title: Text(moreCarTypes[index]),
-                        leading: const Icon(Icons.directions_car),
+                        title: Text(
+                          moreCarTypes[index],
+                        ),
+                        leading: const Icon(
+                          Icons.directions_car,
+                        ),
                         onTap: () {
                           Navigator.pop(context);
                           onSelect(moreCarTypes[index]); // ✅ return selected
@@ -1057,7 +1072,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
       },
       child: Card(
         surfaceTintColor: Colors.transparent,
-        color: Colors.white,
+        color: isLight ? Colors.white : Colors.black,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
           side: BorderSide(
@@ -1069,9 +1084,17 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.more_horiz, size: 30),
+              Icon(
+                Icons.more_horiz,
+                size: 30,
+              ),
               SizedBox(height: 8),
-              Text("غير ذلك", style: TextStyle(fontSize: 14)),
+              Text(
+                "غير ذلك",
+                style: TextStyle(
+                  fontSize: 14,
+                ),
+              ),
             ],
           ),
         ),
