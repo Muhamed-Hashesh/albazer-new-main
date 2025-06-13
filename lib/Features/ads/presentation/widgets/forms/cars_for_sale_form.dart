@@ -854,17 +854,17 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
       year: _modelController.text.trim(),
       horsePower: _horsePowerController.text.trim(), //////////////////
       engineCapacity: _engineCapacityController.text.trim(), ////////////
-      drivetrain: _selectedBumper, ////////////////
-      imported: _selectedImported, ///////////
-      manufacturingYear: _selectedYears, //////////////
-      carType: selectedCarTypeeee,
+      drivetrain: _selectedBumper ?? '', ////////////////
+      imported: _selectedImported ?? '', ///////////
+      manufacturingYear: _selectedYears ?? '', //////////////
+      carType: selectedCarTypeeee ?? '',
       doors: _doorsController.text.trim(),
       version: _versionController.text.trim(),
       innerpart: _innerPartController.text.trim(),
-      seats: _selectedseats.toString(),
+      seats: (_selectedseats ?? 0).toString(),
       listingstatus: _selectedSaleOrRent,
-      city: _selectedCity,
-      brand: _selectedBrand,
+      city: _selectedCity ?? '',
+      brand: _selectedBrand ?? '',
       adTitle: _adTitleController.text.trim(),
       description: _descriptionController.text.trim(),
       propertyLocation: _locationController.text.trim(),
@@ -912,6 +912,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
       AppMessages.showError(context, 'ادخل طريقه الدفع');
       return false;
     }
+    if (_selectedBrand == null || _selectedBrand!.isEmpty) {
+      AppMessages.showError(context, 'اختر ماركة السيارة');
+      return false;
+    }
     if (_selectedCity == null) {
       AppMessages.showError(context, 'اختر المحافظة');
       return false;
@@ -936,7 +940,11 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
       AppMessages.showError(context, 'اختر بيع / مستعمل');
       return false;
     }
-    if (_selectedseats == 0) {
+    if (selectedCarTypeeee == null || selectedCarTypeeee!.isEmpty) {
+      AppMessages.showError(context, 'اختر نوع السيارة');
+      return false;
+    }
+    if (_selectedseats == null || _selectedseats == 0) {
       AppMessages.showError(context, 'اختر عدد المقاعد');
       return false;
     }
