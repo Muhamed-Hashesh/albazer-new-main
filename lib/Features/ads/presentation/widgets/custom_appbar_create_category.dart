@@ -29,14 +29,14 @@ class CustomAppBarCreateCategory extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text('مرحبا, ماذا تريد أن تعرض اليوم',
+                Text('مرحبا, أختر الحقل الأكثر تناسباً مع إعلانك',
                     textAlign: TextAlign.center,
                     style: Styles.style16.copyWith(
                         height: 1.8, color: Theme.of(context).focusColor)),
-                Text('أختر الحقل الاكثر تناسبا مع إعلانك',
-                    textAlign: TextAlign.center,
-                    style: Styles.style12
-                        .copyWith(color: Theme.of(context).focusColor)),
+                // Text('أختر الحقل الاكثر تناسبا مع إعلانك',
+                //     textAlign: TextAlign.center,
+                //     style: Styles.style12
+                //         .copyWith(color: Theme.of(context).focusColor)),
               ],
             ),
           ),
