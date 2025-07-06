@@ -222,9 +222,9 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
   ];
   final List<String> dollarOrLera = [
     "دولار",
-    "ليره",
+    "ليرة",
   ];
-  String _dollarOrLera = 'ليره';
+  String _dollarOrLera = 'ليرة';
   String? _selectedCity;
   String? _selectedFloor;
   String? _selectedFloorNum;
@@ -552,7 +552,7 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
               key: _fieldKeys['currency'],
               selectedValue: _dollarOrLera,
               hint: "اختر العملة",
-              options: const ['دولار', 'ليره'],
+              options: const ['دولار', 'ليرة'],
               onChanged: (currency) =>
                   setState(() => _dollarOrLera = currency!),
             ),

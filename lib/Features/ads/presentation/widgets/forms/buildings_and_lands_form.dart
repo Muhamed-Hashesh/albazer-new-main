@@ -89,7 +89,7 @@ class _BuildingsAndLandsFormState extends State<BuildingsAndLandsForm> {
   ];
   final List<String> dollarOrLera = [
     "دولار",
-    "ليره",
+    "ليرة",
   ];
   // final List<String> buildingStatus = [
   //   "جاهز",
@@ -113,7 +113,7 @@ class _BuildingsAndLandsFormState extends State<BuildingsAndLandsForm> {
     "المالك",
     "وكيل",
   ];
-  String _dollarOrLera = 'ليره';
+  String _dollarOrLera = 'ليرة';
   String? _selectedCity;
   void _scrollToFirstInvalidField() {
     final invalidFields = [
@@ -325,7 +325,7 @@ class _BuildingsAndLandsFormState extends State<BuildingsAndLandsForm> {
             key: _fieldKeys['currency'],
             selectedValue: _dollarOrLera,
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (currency) => setState(() => _dollarOrLera = currency!),
           ),
           const SizedBox(height: 25),

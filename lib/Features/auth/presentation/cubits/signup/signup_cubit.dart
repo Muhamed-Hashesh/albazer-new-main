@@ -9,7 +9,7 @@ import 'package:albazar_app/core/options/options.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+// import 'package:sign_in_with_apple/sign_in_with_apple.dart'; // Temporarily disabled due to Android build issues
 
 part 'signup_state.dart';
 
@@ -56,52 +56,52 @@ class SignupCubit extends Cubit<SignupState> {
     }
   }
 
-  // * Apple Up
-  Future<void> appleSignUp() async {
-    try {
-      emit(const SignupLoading());
+  // * Apple Up - Temporarily disabled due to Android build issues
+  // Future<void> appleSignUp() async {
+  //   try {
+  //     emit(const SignupLoading());
 
-      // Request Apple credentials
-      final credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-      );
+  //     // Request Apple credentials
+  //     final credential = await SignInWithApple.getAppleIDCredential(
+  //       scopes: [
+  //         AppleIDAuthorizationScopes.email,
+  //         AppleIDAuthorizationScopes.fullName,
+  //       ],
+  //     );
 
-      // Extract user information from the credential
-      final String firstName = credential.givenName ?? "";
-      final String lastName = credential.familyName ?? "";
-      final String email =
-          credential.email ?? ""; // Email may be null on first sign-in
-      final String phone =
-          ""; // You may need to collect the phone number separately if required
+  //     // Extract user information from the credential
+  //     final String firstName = credential.givenName ?? "";
+  //     final String lastName = credential.familyName ?? "";
+  //     final String email =
+  //         credential.email ?? ""; // Email may be null on first sign-in
+  //     final String phone =
+  //         ""; // You may need to collect the phone number separately if required
 
-      // Set up text controllers for your fields
-      firstNameController = TextEditingController(text: firstName);
-      lastNameController = TextEditingController(text: lastName);
-      emailController = TextEditingController(text: email);
-      phoneController = TextEditingController(text: phone);
+  //     // Set up text controllers for your fields
+  //     firstNameController = TextEditingController(text: firstName);
+  //     lastNameController = TextEditingController(text: lastName);
+  //     emailController = TextEditingController(text: email);
+  //     phoneController = TextEditingController(text: phone);
 
-      // Create a response object to hold the user data
-      // final response = UserResponse(
-      //   firstName: firstName,
-      //   lastName: lastName,
-      //   email: email,
-      //   phone: phone,
-      // );
+  //     // Create a response object to hold the user data
+  //     // final response = UserResponse(
+  //     //   firstName: firstName,
+  //     //   lastName: lastName,
+  //     //   email: email,
+  //     //   phone: phone,
+  //     // );
 
-      // Emit success state with the response data
-      log('Sucessfully ');
-      // emit(AppleSignUp(response));
-    } on AppException catch (e) {
-      // Handle specific exceptions if any
-      emit(SignupError(error: e.message));
-      log("message: ${e.message}");
-    } catch (e, s) {
-      // Catch any other errors
-      emit(SignupError(error: e.toString()));
-      log("Apple sign-in failed: $e", error: e, stackTrace: s);
-    }
-  }
+  //     // Emit success state with the response data
+  //     log('Sucessfully ');
+  //     // emit(AppleSignUp(response));
+  //   } on AppException catch (e) {
+  //     // Handle specific exceptions if any
+  //     emit(SignupError(error: e.message));
+  //     log("message: ${e.message}");
+  //   } catch (e, s) {
+  //     // Catch any other errors
+  //     emit(SignupError(error: e.toString()));
+  //     log("Apple sign-in failed: $e", error: e, stackTrace: s);
+  //   }
+  // }
 }

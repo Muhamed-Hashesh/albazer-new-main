@@ -35,7 +35,7 @@ class PropertiesForSaleFiltersFormState
       _buildingAgeontroller = TextEditingController(),
       _currencyController = TextEditingController();
   String? _selectedCity;
-  String _dollarOrLeraa = 'ليره';
+  String _dollarOrLeraa = 'ليرة';
   String _selectedBuilding = '',
       _selectedRentRate = '',
       _selectedChoice = '',
@@ -475,7 +475,7 @@ class PropertiesForSaleFiltersFormState
             selectedValue: _dollarOrLeraa,
             // label: 'العملة',
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (curruncy) {
               setState(() {
                 _dollarOrLeraa = curruncy!;

@@ -87,7 +87,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
       _selectedTransmission = '',
       _selectedPaymentMethod = '',
       _owner = '',
-      _dollarOrLera = 'ليره',
+      _dollarOrLera = 'ليرة',
       _selectedSaleOrRent = '',
       // ignore: prefer_final_fields
       _selectedCarType = '';
@@ -276,7 +276,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
   ];
   final List<String> dollarOrLera = [
     "دولار",
-    "ليره",
+    "ليرة",
   ];
   void _scrollToFirstInvalidField() {
     final invalidFields = [
@@ -775,7 +775,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
             key: _fieldKeys['currency'],
             selectedValue: _dollarOrLera,
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (currency) => setState(() => _dollarOrLera = currency!),
           ),
           const SizedBox(height: 25),

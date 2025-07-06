@@ -67,25 +67,45 @@ class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
       ];
 
   Map<String, dynamic> _search() {
-    if (widget.category.name == _categoryNames[0]) {
-      return _propertiesForRentKey.currentState!.search();
+    final index = _categoryNames.indexOf(widget.category.name);
+    if (index == -1) {
+      log("Category '${widget.category.name}' not found in _categoryNames during search");
+      return {};
     }
-    if (widget.category.name == _categoryNames[1]) {
-      return _propertiesForSaleKey.currentState!.search();
+
+    switch (index) {
+      case 0:
+        return _propertiesForRentKey.currentState!.search();
+      case 1:
+        return _propertiesForSaleKey.currentState!.search();
+      case 2:
+        return _buildingsAndLandsKey.currentState!.search();
+      case 3:
+        return _carsForSaleKey.currentState!.search();
+      default:
+        return {};
     }
-    if (widget.category.name == _categoryNames[2]) {
-      return _buildingsAndLandsKey.currentState!.search();
-    }
-    if (widget.category.name == _categoryNames[3]) {
-      return _carsForSaleKey.currentState!.search();
-    }
-    return {};
   }
 
   @override
   Widget build(BuildContext context) {
     final index = _categoryNames.indexOf(widget.category.name);
     log("$index ${widget.category.name}");
+
+    // Handle case where category name is not found
+    if (index == -1) {
+      log("Category '${widget.category.name}' not found in _categoryNames");
+      return Drawer(
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        child: const Center(
+          child: Text(
+            'نوع الفئة غير مدعوم',
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      );
+    }
+
     return Drawer(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       child: Column(

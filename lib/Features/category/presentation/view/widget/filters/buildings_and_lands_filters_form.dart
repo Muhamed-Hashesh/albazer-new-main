@@ -27,7 +27,7 @@ class BuildingsAndLandsFiltersFormState
       _cityController = TextEditingController(),
       _currencyController = TextEditingController();
   String? _selectedCity;
-  String _dollarOrLeraa = 'ليره';
+  String _dollarOrLeraa = 'ليرة';
   String _selectedLandType = '',
       _selectedSaleOrRent = '',
       _selectedContactMethod = '',
@@ -44,19 +44,19 @@ class BuildingsAndLandsFiltersFormState
   double _upperPriceValue = 50000000; // 50 million max price for lands
 
   final List<String> landTypes = [
-    "زراعى",
-    "تجارى",
-    "صناعى",
-    "سكنى",
+    "زراعي",
+    "تجاري",
+    "صناعي",
+    "سكني",
   ];
   final List<String> furnitureChoices = [
     "نعم",
     "لا",
   ];
   final List<String> rentRates = [
-    "يوميا",
-    "اسبوعيا",
-    "شهريا",
+    "يومياً",
+    "أسبوعياً",
+    "شهرياً",
   ];
 
   final List<String> saleOrRentChoices = [
@@ -168,7 +168,7 @@ class BuildingsAndLandsFiltersFormState
         color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
-        '$formattedValue م٢',
+        '$formattedValue m2',
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
@@ -284,7 +284,7 @@ class BuildingsAndLandsFiltersFormState
           height: 25,
         ),
         Text(
-          'المساحة (م٢)*',
+          'المساحة (m2)*',
           style: TextStyle(
             color: Theme.of(context).focusColor,
             fontSize: 16,
@@ -365,7 +365,7 @@ class BuildingsAndLandsFiltersFormState
             selectedValue: _dollarOrLeraa,
             // label: 'العملة',
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (curruncy) {
               setState(() {
                 _dollarOrLeraa = curruncy!;

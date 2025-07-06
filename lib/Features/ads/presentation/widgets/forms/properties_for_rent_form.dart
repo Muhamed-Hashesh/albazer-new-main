@@ -163,7 +163,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
     "15",
   ];
 
-  String _dollarOrLera = 'ليره';
+  String _dollarOrLera = 'ليرة';
   String? _selectedFloorNum;
   String? _selectedFloor;
   String? _selectedDeed;
@@ -279,7 +279,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
               }
               return null;
             },
-            label: 'المساحة (م٢)*',
+            label: 'المساحة (m2)*',
             hint: "ادخل مساحة العقار ...",
           ),
           const SizedBox(height: 25),
@@ -551,7 +551,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
           CustomDropdown(
             selectedValue: _dollarOrLera,
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (currency) {
               setState(() {
                 _dollarOrLera = currency!;

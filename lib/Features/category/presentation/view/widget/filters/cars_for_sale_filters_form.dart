@@ -111,7 +111,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
     {"label": "بيك أب", "image": "assets/images/car8.png"},
     {"label": "شاحنة صغيرة/فان", "image": "assets/images/car9.png"},
   ];
-  String _dollarOrLeraa = 'ليره',
+  String _dollarOrLeraa = 'ليرة',
       _selectedSaleOrRentvalue = '',
       _selectedCarType = '',
       _publishedVia = '';
@@ -637,7 +637,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
             selectedValue: _dollarOrLeraa,
             // label: 'العملة',
             hint: "اختر العملة",
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (curruncy) {
               if (mounted) {
                 setState(() {

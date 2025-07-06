@@ -33,7 +33,7 @@ class PropertiesForRentFiltersFormState
       _buildingAgeontroller = TextEditingController(),
       _currencyController = TextEditingController();
   String? _selectedCity;
-  String _dollarOrLeraa = 'ليره';
+  String _dollarOrLeraa = 'ليرة';
 
   String _selectedBuilding = '',
       _selectedRentRate = '',
@@ -207,7 +207,7 @@ class PropertiesForRentFiltersFormState
         color: isLight ? Colors.grey.shade50 : Colors.black,
       ),
       child: Text(
-        '$formattedValue م٢',
+        '$formattedValue m2',
         style: TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
@@ -350,7 +350,7 @@ class PropertiesForRentFiltersFormState
           height: 25,
         ),
         Text(
-          'المساحة (م٢)*',
+          'المساحة (m2)*',
           style: TextStyle(
             color: Theme.of(context).focusColor,
             fontSize: 16,
@@ -446,7 +446,7 @@ class PropertiesForRentFiltersFormState
         CustomDropdown(
             selectedValue: _dollarOrLeraa,
             hint: 'العملة',
-            options: const ['دولار', 'ليره'],
+            options: const ['دولار', 'ليرة'],
             onChanged: (curruncy) {
               setState(() {
                 _dollarOrLeraa = curruncy!;
