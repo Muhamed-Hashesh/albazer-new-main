@@ -13,7 +13,8 @@ class GoogleMapScreen extends StatefulWidget {
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
   GoogleMapController? mapController;
   final TextEditingController _searchController = TextEditingController();
-  final LatLng _initialPosition = const LatLng(30.0444, 31.2357); // Cairos
+  final LatLng _initialPosition =
+      const LatLng(33.5138, 36.2765); // Damascus, Syria
   final Set<Marker> _markers = {};
   bool _mapSupported = true;
   LatLng? _selectedPosition;
