@@ -375,7 +375,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                               .read<ProfileCubit>()
                                               .changePassword(options: options);
                                         },
-                                        title: "تحديث كلمه المرور",
+                                        title: "تحديث كلمة المرور",
                                       ),
                                     );
                                   }),
@@ -433,7 +433,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             },
                           ),
                           CustomTextField(
-                            labelText: "رقم موبايل",
+                            labelText: "رقم الهاتف",
                             controller: phoneController,
                             // validator: ValidationHelper.validatePhoneNumber,
                           ),
@@ -448,7 +448,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           //   },
                           // ),
                           CustomTextField(
-                            labelText: "المدينه",
+                            labelText: "المدينة",
                             controller: cityController,
                           ),
                           const SizedBox(
@@ -468,7 +468,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   width: 5,
                                 ),
                                 Text(
-                                  'للدعم والتواصل والاعلان',
+                                  'للدعم والتواصل والإعلان',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(
                                     color: Theme.of(context).focusColor,

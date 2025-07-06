@@ -26,7 +26,7 @@ class ChatHomeScreen extends StatelessWidget {
         child: Column(
           children: [
             const FormHeader(
-              title: "محادثه",
+              title: "محادثة",
               image: AppIcons.chat, // you can change this icon to messagess
               isIcon: true,
             ),

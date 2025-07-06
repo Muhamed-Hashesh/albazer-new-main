@@ -36,7 +36,7 @@ class _FeaturedItemsScreenState extends State<FeaturedItemsScreen> {
         child: Column(
           children: [
             const FormHeader(
-              title: "متابعه",
+              title: "متابعة",
               image: AppIcons.following,
               isIcon: true,
               toHome: true,
