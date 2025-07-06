@@ -52,7 +52,7 @@ dependencies:
   permission_handler: null
   provider: ^6.1.4
   shared_preferences: null
-  sign_in_with_apple: ^7.0.1
+  # sign_in_with_apple: ^7.0.1  # Temporarily disabled due to Android build issues
   skeletonizer: ^1.4.3
   socket_io_client: ^3.0.2
   url_launcher: ^6.3.1
