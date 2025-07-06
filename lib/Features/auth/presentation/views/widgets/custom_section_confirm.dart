@@ -39,7 +39,7 @@ class CustomSectionConfirm extends StatelessWidget {
                     Styles.style9.copyWith(color: Theme.of(context).focusColor),
               ),
               Text(
-                "برجاء الموافقة علي الشروط و الأحكام لعرض إعلانك",
+                "برجاء الموافقة على الشروط و الأحكام لعرض إعلانك",
                 style: Styles.style9.copyWith(
                     decoration: TextDecoration.underline,
                     color: Theme.of(context).focusColor),

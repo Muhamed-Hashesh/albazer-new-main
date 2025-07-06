@@ -23,7 +23,7 @@ class CustomPhoneField extends StatelessWidget {
     super.key,
     required this.labelText,
     this.controller,
-    this.initialCountryCode = 'EG',
+    this.initialCountryCode = 'SY',
     this.validator,
     this.onChanged,
     this.onSaved,

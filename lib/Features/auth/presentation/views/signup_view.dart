@@ -95,7 +95,7 @@ class _SignUpViewState extends State<SignUpView> {
                         ],
                       ),
                       CustomTextField(
-                        labelText: "البريد الإلكترونى",
+                        labelText: "البريد الإلكتروني",
                         controller: cubit.emailController,
                         validator: ValidationHelper.validateEmail,
                         keyboardType: TextInputType.emailAddress,
@@ -107,7 +107,7 @@ class _SignUpViewState extends State<SignUpView> {
                       //   keyboardType: TextInputType.phone,
                       // ),
                       CustomPhoneField(
-                        labelText: 'رقم موبايل',
+                        labelText: 'رقم الموبايل',
                         controller: cubit.phoneController,
                         onChanged: (phone) {
                           phoneNumber = phone!.completeNumber;
@@ -115,13 +115,13 @@ class _SignUpViewState extends State<SignUpView> {
                         },
                       ),
                       CustomTextField(
-                        labelText: "كلمه المرور",
+                        labelText: "كلمة المرور",
                         controller: cubit.passwordController,
                         validator: ValidationHelper.validatePassword,
                         obscureText: true,
                       ),
                       CustomTextField(
-                        labelText: "تأكيد كلمه المرور",
+                        labelText: "تأكيد كلمة المرور",
                         controller: cubit.confirmPasswordController,
                         validator: (value) =>
                             ValidationHelper.validateConfirmPassword(
