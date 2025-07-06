@@ -20,12 +20,12 @@ class AppConstants {
     'دير الزور',
     'الحسكة',
   ];
-  
+
   static const List<String> carBrands = [
     "أوبل",
-    "أودى",
+    "أودي",
     "ألتيما",
-    "أنفينيتى",
+    "أنفينيتي",
     "أيسوزو",
     "أولدزموبيل",
     "أوستن مارتن",
@@ -138,8 +138,8 @@ class AppConstants {
   ];
   static List<CarModel> cars = [
     CarModel(name: 'أوبل', image: CarsLogo.opel),
-    CarModel(name: 'أودى', image: CarsLogo.audit),
-    CarModel(name: 'أنفينيتى', image: CarsLogo.infiniti),
+    CarModel(name: 'أودي', image: CarsLogo.audit),
+    CarModel(name: 'أنفينيتي', image: CarsLogo.infiniti),
     CarModel(name: 'أيسوزو', image: CarsLogo.isuzu),
     CarModel(name: 'أولدزموبيل', image: CarsLogo.oldsmobile),
     CarModel(name: 'أوستن مارتن', image: CarsLogo.astonmartin),

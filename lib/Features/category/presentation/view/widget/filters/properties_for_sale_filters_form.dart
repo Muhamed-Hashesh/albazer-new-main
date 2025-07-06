@@ -93,13 +93,13 @@ class PropertiesForSaleFiltersFormState
     "لا",
   ];
   final List<String> rentRates = [
-    "يوميا",
-    "اسبوعيا",
-    "شهريا",
+    "يومياً",
+    "أسبوعياً",
+    "شهرياً",
   ];
 
   final List<String> luxuries = [
-    "بلكون",
+    "شرفة",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "أمن",

@@ -185,9 +185,9 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
     "وكيل",
   ];
   final List<String> rentRates = [
-    "يوميا",
-    "اسبوعيا",
-    "شهريا",
+    "يومياً",
+    "أسبوعياً",
+    "شهرياً",
   ];
   final List<String> contactMethods = [
     "موبايل",
@@ -200,7 +200,7 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
     "غاز مركزي",
     "أمن",
     "موقف سيارات",
-    "بلكون",
+    "شرفة",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "حمام سباحة",

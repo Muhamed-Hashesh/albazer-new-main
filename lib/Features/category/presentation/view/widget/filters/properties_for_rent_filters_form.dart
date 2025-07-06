@@ -76,9 +76,9 @@ class PropertiesForRentFiltersFormState
     "وكيل",
   ];
   final List<String> rentRates = [
-    "يوميا",
-    "اسبوعيا",
-    "شهريا",
+    "يومياً",
+    "أسبوعياً",
+    "شهرياً",
   ];
 
   final List<String> luxuries = [
@@ -645,7 +645,7 @@ class PropertiesForRentFiltersFormState
           height: 25,
         ),
         CheckBoxesSection(
-            title: 'معدل الايجار',
+            title: 'معدل الإيجار',
             items: rentRates,
             selectedItems: [_selectedRentRate],
             onChanged: (rentRate) {
