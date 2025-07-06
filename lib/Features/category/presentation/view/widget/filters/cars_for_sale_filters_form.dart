@@ -100,6 +100,26 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
     "تقسيط",
     "كاش أو تقسيط",
   ];
+  final List<String> carColors = [
+    "أبيض",
+    "أسود",
+    "رمادي",
+    "أحمر",
+    "أزرق",
+    "أخضر",
+    "أصفر",
+    "برتقالي",
+    "بنفسجي",
+    "بني",
+    "ذهبي",
+    "فضي",
+    "وردي",
+    "بيج",
+    "كحلي",
+    "أخضر غامق",
+    "أحمر غامق",
+    "أزرق غامق",
+  ];
   final List<Map<String, String>> carTypes = [
     {"label": "كوبيه", "image": "assets/images/car1.png"},
     {"label": "سيدان", "image": "assets/images/car2.png"},
@@ -116,6 +136,7 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
       _selectedCarType = '',
       _publishedVia = '';
   String? selectedCarTypeeee;
+  String? _selectedColor;
 
   @override
   void initState() {
@@ -141,6 +162,9 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
     _doorsController.text =
         widget.filters?["number of doors"]?.toString() ?? '';
     _colorController.text = widget.filters?["color"]?.toString() ?? '';
+    String? colorValue = widget.filters?["color"]?.toString();
+    _selectedColor =
+        (colorValue != null && colorValue.isNotEmpty) ? colorValue : null;
     _modelController.text = widget.filters?["year"]?.toString() ?? '';
     _versionController.text = widget.filters?["virsion"]?.toString() ?? '';
     _saleorRentController.text =
@@ -229,8 +253,8 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
         "Horsepower": _horsePowerController.text.trim(),
       if (_engineCapacityController.text.trim().isNotEmpty)
         "Engine Capacity": _engineCapacityController.text.trim(),
-      if (_colorController.text.trim().isNotEmpty)
-        "color": _colorController.text.trim(),
+      if (_selectedColor != null && _selectedColor!.trim().isNotEmpty)
+        "color": _selectedColor!.trim(),
       if (_numberOfDoorsController.text.trim().isNotEmpty)
         "number of doors": _numberOfDoorsController.text.trim(),
       if (_innerPartController.text.trim().isNotEmpty)
@@ -536,17 +560,28 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
         const SizedBox(
           height: 25,
         ),
-        CustomLabeledTextField(
-          controller: _colorController,
-          keyboardType: TextInputType.text,
-          validator: (adTitle) {
-            if (adTitle!.isEmpty) {
-              return 'من فضلك ادخل لون السيارة';
+        Text(
+          'لون السيارة',
+          style: TextStyle(
+            color: Theme.of(context).focusColor,
+            fontSize: 16,
+            fontFamily: 'Noor',
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+        const SizedBox(height: 10),
+        CustomDropdown(
+          selectedValue: _selectedColor,
+          hint: 'اختر لون السيارة',
+          options: carColors,
+          onChanged: (color) {
+            if (mounted) {
+              setState(() {
+                _selectedColor = color!;
+                _colorController.text = color;
+              });
             }
-            return null;
           },
-          label: 'لون السيارة',
-          hint: "لون السيارة",
         ),
         const SizedBox(
           height: 25,
