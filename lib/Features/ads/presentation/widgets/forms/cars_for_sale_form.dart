@@ -405,7 +405,7 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
           CustomLabeledTextField(
             key: _fieldKeys['model'],
             controller: _modelController,
-            keyboardType: TextInputType.number,
+            keyboardType: TextInputType.text,
             validator: (value) =>
                 value!.isEmpty ? 'من فضلك ادخل موديل السيارة' : null,
             label: 'موديل السيارة',
