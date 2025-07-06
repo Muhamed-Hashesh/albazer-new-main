@@ -80,7 +80,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
     "شقة",
     "فيلا",
     "بناء",
-    "بيت عربى",
+    "بيت عربي",
     // "بيت عربي",
     "محل",
     "مستودع",

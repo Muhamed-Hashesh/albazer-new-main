@@ -58,7 +58,7 @@ class PropertiesForRentFiltersFormState
     "شقة",
     "فيلا",
     "بناء",
-    "بيت عربى",
+    "بيت عربي",
 
     // "بيت عربي",
     "محل",

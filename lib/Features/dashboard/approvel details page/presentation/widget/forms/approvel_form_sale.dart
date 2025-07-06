@@ -28,7 +28,7 @@ class _ApprovelFormSaleState extends State<ApprovelFormSale> {
     "شقة",
     "فيلا",
     "بناء",
-    "بيت عربى",
+    "بيت عربي",
 
     // "بيت عربي",
     "محل",

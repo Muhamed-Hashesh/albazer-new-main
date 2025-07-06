@@ -48,7 +48,7 @@ class _ApprovelFormRentState extends State<ApprovelFormRent> {
     "شقة",
     "فيلا",
     "بناء",
-    "بيت عربى",
+    "بيت عربي",
 
     // "بيت عربي",
     "محل",

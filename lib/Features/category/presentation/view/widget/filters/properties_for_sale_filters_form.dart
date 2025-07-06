@@ -72,14 +72,14 @@ class PropertiesForSaleFiltersFormState
   final List<String> deliveryTerms = [
     "بدون اكساء",
     "نص اكساء",
-    "اكساء ديلوكسى",
+    "اكساء ديلوكسي",
   ];
 
   final List<String> buildings = [
     "شقة",
     "فيلا",
     "بناء",
-    "بيت عربى",
+    "بيت عربي",
 
     // "بيت عربي",
     "محل",
