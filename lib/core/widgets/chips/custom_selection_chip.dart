@@ -48,8 +48,7 @@ class CustomSelectionChip extends StatelessWidget {
                       ? Theme.of(context).secondaryHeaderColor
                       : const Color(0xff8C8C8C)
                   : Theme.of(context).hoverColor,
-              fontSize: 12.sp,
-              fontFamily: 'Noor',
+              fontSize: 14.sp,
               fontWeight: FontWeight.w400,
             ),
           ),

@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         child: Column(
           children: [
             const FormHeader(
-              title: "حسابى",
+              title: "حسابي",
               image: AppIcons.profile,
               isIcon: true,
               toHome: true,
@@ -236,7 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               child: Row(
                                 children: [
                                   Text(
-                                    'إعلاناتى',
+                                    'إعلاناتي',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       color: Theme.of(context).focusColor,
@@ -265,7 +265,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
                           Text(
-                            'هذا الاسم سوف يظهر علي الحساب',
+                            'هذا الاسم سوف يظهر على الحساب',
                             textAlign: TextAlign.right,
                             style: TextStyle(
                               color: Theme.of(context).focusColor,
@@ -312,19 +312,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 CustomTextField(
-                                  labelText: "كلمه المرور الحاليه",
+                                  labelText: "كلمة المرور الحالية",
                                   controller: currentPasswordController,
                                   obscureText: true,
                                   validator: ValidationHelper.validatePassword,
                                 ),
                                 CustomTextField(
-                                  labelText: "كلمه مرور جديده",
+                                  labelText: "كلية مرور جديدة",
                                   controller: newPasswordController,
                                   validator: ValidationHelper.validatePassword,
                                   obscureText: true,
                                 ),
                                 CustomTextField(
-                                  labelText: "تاكيد كلمه المرور ",
+                                  labelText: "تاكيد كلمة المرور ",
                                   controller: confirmPasswordController,
                                   obscureText: true,
                                   validator: (value) =>
