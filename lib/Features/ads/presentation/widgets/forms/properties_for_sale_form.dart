@@ -135,7 +135,7 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
   final List<String> deeds = [
     "أخضر طابو (طابو نظامي)",
     "طابو زراعي",
-    "حكم محكة",
+    "حكم محكمة",
     "كاتب عدل",
   ];
   final List<String> floor = [

@@ -125,7 +125,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
   final List<String> deeds = [
     "أخضر طابو (طابو نظامي)",
     "طابو زراعي",
-    "حكم محكة",
+    "حكم محكمة",
     "كاتب عدل",
   ];
   final List<String> floor = [
