@@ -61,7 +61,7 @@ class HomeAppBar extends StatelessWidget {
                   height: 50,
                   decoration: const BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage("assets/images/logo2.png"),
+                      image: AssetImage("assets/images/app_logo.png"),
                       fit: BoxFit.fill,
                     ),
                   ),
