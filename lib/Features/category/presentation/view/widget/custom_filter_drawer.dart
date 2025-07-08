@@ -62,8 +62,8 @@ class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
   List<String> get _categoryNames => const [
         'عقار للإيجار',
         'عقار للبيع',
-        'مبانى وأراضى',
-        'سيارات',
+        'مباني وأراضي',
+        'سيارات للبيع',
       ];
 
   Map<String, dynamic> _search() {
