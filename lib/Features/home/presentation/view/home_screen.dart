@@ -144,7 +144,7 @@ class LatestAdsSection extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "أضيف حديثَا في ${category.name}",
+                            "أضيف حديثاً في ${category.name}",
                             style: Styles.style18
                                 .copyWith(color: Theme.of(context).focusColor),
                           ),
@@ -191,7 +191,7 @@ class LatestAdsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "أضيف حديثَا في ${category.name}",
+            "أضيف حديثاً في ${category.name}",
             style: Styles.style18,
           ),
           MultiBlocProvider(

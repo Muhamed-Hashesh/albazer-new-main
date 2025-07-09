@@ -318,7 +318,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   validator: ValidationHelper.validatePassword,
                                 ),
                                 CustomTextField(
-                                  labelText: "كلية مرور جديدة",
+                                  labelText: "كلمة مرور جديدة",
                                   controller: newPasswordController,
                                   validator: ValidationHelper.validatePassword,
                                   obscureText: true,

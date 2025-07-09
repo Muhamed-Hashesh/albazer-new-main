@@ -63,7 +63,7 @@ class _CustomFilterDrawerState extends State<CustomFilterDrawer> {
         'عقار للإيجار',
         'عقار للبيع',
         'مباني وأراضي',
-        'سيارات للبيع',
+        'سيارات',
       ];
 
   Map<String, dynamic> _search() {

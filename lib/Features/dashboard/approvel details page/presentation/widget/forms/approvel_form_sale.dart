@@ -58,7 +58,7 @@ class _ApprovelFormSaleState extends State<ApprovelFormSale> {
   final List<String> deliveryTerms = [
     "بدون إكساء",
     "نص إكساء",
-    "إكساء ديلوكس",
+    "إكساء ديلوكسي",
   ];
   final List<String> buildingStatus = [
     "جاهز",

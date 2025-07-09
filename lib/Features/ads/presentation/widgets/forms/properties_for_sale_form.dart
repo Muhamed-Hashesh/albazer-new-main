@@ -213,7 +213,7 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
   final List<String> deliveryTerms = [
     "بدون إكساء",
     "نص إكساء",
-    "إكساء ديلوكس",
+    "إكساء ديلوكسي",
   ];
   final List<String> paymentMethods = [
     "كاش",
