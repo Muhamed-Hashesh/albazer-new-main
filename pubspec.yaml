@@ -71,6 +71,7 @@ flutter:
     - assets/images/
     - assets/car logoes/
     - assets/icons/
+    - assets/flags/
     - assets/notifications_key/albazar-70cdd-e6ef120fb540.json
 
   fonts:

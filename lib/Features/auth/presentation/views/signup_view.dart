@@ -110,8 +110,8 @@ class _SignUpViewState extends State<SignUpView> {
                         labelText: 'رقم الموبايل',
                         controller: cubit.phoneController,
                         onChanged: (phone) {
-                          phoneNumber = phone!.completeNumber;
-                          log('📞 ${phone.completeNumber}');
+                          phoneNumber = phone;
+                          log('📞 $phone');
                         },
                       ),
                       CustomTextField(
