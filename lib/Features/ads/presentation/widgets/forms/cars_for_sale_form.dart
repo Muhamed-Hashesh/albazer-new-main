@@ -35,6 +35,7 @@ class CarsForSaleForm extends StatefulWidget {
 
 class _CarsForSaleFormState extends State<CarsForSaleForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  bool isRent = false;
   final Map<String, GlobalKey> _fieldKeys = {
     'brand': GlobalKey(),
     'version': GlobalKey(),
@@ -104,15 +105,15 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
   final List<String> _selectedAddOns = [];
   final List<String> _selectedContactMethod = [];
   final List<Map<String, String>> carTypes = [
-    {"label": "كوبيه", "image": "assets/images/car1.png"},
+    {"label": "سيارة دفع رباعي", "image": "assets/images/car1.png"},
     {"label": "سيدان", "image": "assets/images/car2.png"},
-    {"label": "كروس اوفر", "image": "assets/images/car3.png"},
-    {"label": "سيارة مكشوفة", "image": "assets/images/car4.png"},
+    {"label": " كوبيه", "image": "assets/images/car3.png"},
+    {"label": "كروس اوفر", "image": "assets/images/car4.png"},
     {"label": "سيارة رياضية", "image": "assets/images/car5.png"},
-    {"label": "جيب", "image": "assets/images/car6.png"},
-    {"label": "هاتشباك", "image": "assets/images/car7.png"},
-    {"label": "بيك أب", "image": "assets/images/car8.png"},
-    {"label": "شاحنة صغيرة/فان", "image": "assets/images/car9.png"},
+    {"label": "سيارة مكشوفة", "image": "assets/images/car6.png"},
+    {"label": "شاحنة صغيرة / فان", "image": "assets/images/car7.png"},
+    {"label": " شاحنة منافع", "image": "assets/images/car8.png"},
+    // {"label": "شاحنة صغيرة/فان", "image": "assets/images/car9.png"},
   ];
   final List<String> contactMethods = [
     "موبايل",
@@ -406,7 +407,10 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
             title: 'بيع/ايجار',
             items: saleOrRentChoices,
             selectedItems: [_selectedSaleOrRent],
-            onSelect: (choice) => setState(() => _selectedSaleOrRent = choice),
+            onSelect: (choice) => setState(() {
+              _selectedSaleOrRent = choice;
+              isRent = choice == 'إيجار';
+            }),
           ),
           const SizedBox(height: 25),
           NumberField(
@@ -775,26 +779,31 @@ class _CarsForSaleFormState extends State<CarsForSaleForm> {
                 : "ادخل سعر السيارة ... USD",
           ),
           const SizedBox(height: 10),
-          CustomCheckBox(
-            text: "قابل للتفاوض",
-            isChecked: _negotiable,
-            onChanged: (value) => setState(() => _negotiable = value!),
-          ),
+          isRent
+              ? const SizedBox()
+              : CustomCheckBox(
+                  text: "قابل للتفاوض",
+                  isChecked: _negotiable,
+                  onChanged: (value) => setState(() => _negotiable = value!),
+                ),
 
           const SizedBox(height: 25),
-          CheckBoxesSection(
-            key: _fieldKeys['payment'],
-            title: 'طريقة الدفع',
-            items: paymentMethods,
-            selectedItems: [_selectedPaymentMethod],
-            onChanged: (paymentMethod) {
-              setState(() {
-                _selectedPaymentMethod = _selectedPaymentMethod == paymentMethod
-                    ? ''
-                    : paymentMethod;
-              });
-            },
-          ),
+          isRent
+              ? const SizedBox()
+              : CheckBoxesSection(
+                  key: _fieldKeys['payment'],
+                  title: 'طريقة الدفع',
+                  items: paymentMethods,
+                  selectedItems: [_selectedPaymentMethod],
+                  onChanged: (paymentMethod) {
+                    setState(() {
+                      _selectedPaymentMethod =
+                          _selectedPaymentMethod == paymentMethod
+                              ? ''
+                              : paymentMethod;
+                    });
+                  },
+                ),
           const SizedBox(height: 25),
           Text(
             "العملة",

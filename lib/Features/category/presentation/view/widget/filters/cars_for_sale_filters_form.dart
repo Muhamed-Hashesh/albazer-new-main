@@ -121,15 +121,15 @@ class CarsForSaleFiltersFormState extends State<CarsForSaleFiltersForm> {
     "أزرق غامق",
   ];
   final List<Map<String, String>> carTypes = [
-    {"label": "كوبيه", "image": "assets/images/car1.png"},
+    {"label": "سيارة دفع رباعي", "image": "assets/images/car1.png"},
     {"label": "سيدان", "image": "assets/images/car2.png"},
-    {"label": "كروس اوفر", "image": "assets/images/car3.png"},
-    {"label": "سيارة مكشوفة", "image": "assets/images/car4.png"},
+    {"label": " كوبيه", "image": "assets/images/car3.png"},
+    {"label": "كروس اوفر", "image": "assets/images/car4.png"},
     {"label": "سيارة رياضية", "image": "assets/images/car5.png"},
-    {"label": "جيب", "image": "assets/images/car6.png"},
-    {"label": "هاتشباك", "image": "assets/images/car7.png"},
-    {"label": "بيك أب", "image": "assets/images/car8.png"},
-    {"label": "شاحنة صغيرة/فان", "image": "assets/images/car9.png"},
+    {"label": "سيارة مكشوفة", "image": "assets/images/car6.png"},
+    {"label": "شاحنة صغيرة / فان", "image": "assets/images/car7.png"},
+    {"label": " شاحنة منافع", "image": "assets/images/car8.png"},
+    // {"label": "شاحنة صغيرة/فان", "image": "assets/images/car9.png"},
   ];
   String _dollarOrLeraa = 'ليرة',
       _selectedSaleOrRentvalue = '',
