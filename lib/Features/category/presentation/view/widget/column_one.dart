@@ -26,7 +26,7 @@ class ColumnOne extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'رقم الإعلان: ${ad.id}',
+              'رقم الإعلان: ${(ad.id?.length ?? 0) > 3 ? ad.id!.substring(ad.id!.length - 3) : (ad.id ?? '')}',
               style: TextStyle(
                 color: Theme.of(context).hoverColor.withOpacity(.5),
                 fontSize: 12,

@@ -34,22 +34,32 @@ class ColumnTwo extends StatelessWidget {
         ),
         SizedBox(
             // width: 350,
-            height: ad.amenities!.length < 3
-                ? 80
-                : ad.amenities!.length > 3 && ad.amenities!.length < 6
-                    ? 120
-                    : ((ad.amenities!.length / 3).floor()) * 80,
+            height: () {
+              int actualCount = [
+                ad.amenities!.length,
+                text2.length,
+                icons2.length
+              ].reduce((a, b) => a < b ? a : b);
+              return actualCount < 3
+                  ? 80.0
+                  : actualCount > 3 && actualCount < 6
+                      ? 120.0
+                      : ((actualCount / 3).floor()) * 80.0;
+            }(),
             // color: Colors.amber,
             child: GridView.builder(
-              itemCount: ad.amenities!.length,
+              itemCount: [ad.amenities!.length, text2.length, icons2.length]
+                  .reduce((a, b) => a < b ? a : b),
               // physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
                 childAspectRatio: 2,
               ),
               itemBuilder: (context, index) => CustomWidgetColumn(
-                text: text2[index],
-                image: icons2[index],
+                text: index < text2.length ? text2[index] : 'غير محدد',
+                image: index < icons2.length
+                    ? icons2[index]
+                    : 'assets/icons/star.svg',
                 style: Styles.style8
                     .copyWith(color: Theme.of(context).focusColor)
                     .copyWith(fontSize: 12),
