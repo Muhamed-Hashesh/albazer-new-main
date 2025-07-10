@@ -63,10 +63,21 @@ class ValidationHelper {
     if (countryCode == null) {
       return "ادخل كود الدولة";
     }
-    final RegExp phoneRegex = RegExp(r'^\+\d{6,15}$');
-    if (!phoneRegex.hasMatch(phoneNumber)) {
-      return "رقم الهاتف غير صالح";
+
+    // التحقق من الرقم الكامل مع رمز الدولة
+    if (value != null && value.isNotEmpty) {
+      final RegExp fullPhoneRegex = RegExp(r'^\+\d{6,15}$');
+      if (!fullPhoneRegex.hasMatch(value)) {
+        return "رقم الهاتف غير صالح";
+      }
+    } else {
+      // التحقق من رقم الهاتف فقط (بدون رمز الدولة)
+      final RegExp phoneRegex = RegExp(r'^\d{6,15}$');
+      if (!phoneRegex.hasMatch(phoneNumber)) {
+        return "رقم الهاتف غير صالح";
+      }
     }
+
     return null;
   }
 }
