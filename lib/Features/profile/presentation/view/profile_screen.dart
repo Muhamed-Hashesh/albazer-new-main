@@ -324,7 +324,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                   obscureText: true,
                                 ),
                                 CustomTextField(
-                                  labelText: "تاكيد كلمة المرور ",
+                                  labelText: "تأكيد كلمة المرور ",
                                   controller: confirmPasswordController,
                                   obscureText: true,
                                   validator: (value) =>
