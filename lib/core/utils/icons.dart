@@ -138,4 +138,5 @@ class CarsLogo {
   static const String seat = '$_base/Seat.png';
   static const String saipa = '$_base/Saipa.png';
   static const String zotye = '$_base/Zotye.png';
+  static const String volkan = '$_base/Volkswagen.png';
 }

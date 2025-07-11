@@ -28,7 +28,7 @@ class CustomSelectionChip extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: 86.w,
-        height: 36.h,
+        
         padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected ? AppColor.coverPageColor : Colors.transparent,

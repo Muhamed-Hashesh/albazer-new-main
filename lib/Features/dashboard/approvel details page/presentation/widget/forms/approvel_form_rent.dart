@@ -27,7 +27,7 @@ class _ApprovelFormRentState extends State<ApprovelFormRent> {
   final TextEditingController _buildingAgeController = TextEditingController();
 
   final List<String> luxuries = [
-    "شرفة",
+    "بلكون",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "أمن",
