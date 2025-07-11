@@ -30,8 +30,7 @@ class ChatHomeScreen extends StatelessWidget {
               image: AppIcons.chat, // you can change this icon to messagess
               isIcon: true,
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height - 170,
+            Expanded(
               child: BlocConsumer<ChatsCubit, ChatsState>(
                 listener: (context, state) {
                   if (state.status == RequestStatus.error) {
@@ -97,7 +96,6 @@ class ChatHomeScreen extends StatelessWidget {
                 },
               ),
             ),
-            const Spacer(),
             const CustomBottomNav(),
           ],
         ),

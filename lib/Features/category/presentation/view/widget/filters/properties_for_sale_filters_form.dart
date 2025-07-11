@@ -99,7 +99,7 @@ class PropertiesForSaleFiltersFormState
   ];
 
   final List<String> luxuries = [
-    "شرفة",
+    "بلكون",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "أمن",

@@ -200,7 +200,7 @@ class _PropertiesForSaleFormState extends State<PropertiesForSaleForm> {
     "غاز مركزي",
     "أمن",
     "موقف سيارات",
-    "شرفة",
+    "بلكون",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "حمام سباحة",

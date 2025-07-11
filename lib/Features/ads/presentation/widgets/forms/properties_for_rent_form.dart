@@ -116,7 +116,7 @@ class _PropertiesForRentFormState extends State<PropertiesForRentForm> {
     "غاز مركزي",
     "أمن",
     "موقف سيارات",
-    "شرفة",
+    "بلكون",
     "أجهزة المطبخ",
     "حديقة خاصة",
     "حمام سباحة",

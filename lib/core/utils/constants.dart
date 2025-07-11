@@ -218,5 +218,6 @@ class AppConstants {
     CarModel(name: 'هامر', image: CarsLogo.hummer),
     CarModel(name: 'هوندا', image: CarsLogo.honda),
     CarModel(name: 'هيونداي', image: CarsLogo.hyundai),
+    CarModel(name: 'الفوكس فاكن', image: CarsLogo.volkan),
   ];
 }
